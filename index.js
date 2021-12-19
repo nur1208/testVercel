@@ -4,7 +4,9 @@ const app = express();
 const port = 3030;
 
 const call = async (num) => {
-  await axios.get(`http://localhost:3030/?number=${num}`);
+  await axios.get(
+    `https://test-vercel-six-psi.vercel.app/?number=${num}`
+  );
 };
 app.get("/", (req, res) => {
   let num = 0;
