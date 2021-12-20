@@ -1,4 +1,5 @@
-import puppeteer from "puppeteer";
+// import puppeteer from "puppeteer";
+import chromium from "chrome-aws-lambda";
 import cheerio from "cheerio";
 import fs from "fs";
 import { promisify } from "util";
@@ -25,7 +26,18 @@ export const getYahooFinanceNews = async () => {
 
   const timeout = 1000 * 60 * 2;
 
-  const browser = await puppeteer.launch({ headless: true });
+  // const browser = await puppeteer.launch({ headless: true });
+  const browser = await chromium.puppeteer.launch({
+    args: [
+      ...chromium.args,
+      "--hide-scrollbars",
+      "--disable-web-security",
+    ],
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+    headless: true,
+    ignoreHTTPSErrors: true,
+  });
   const page = await browser.newPage();
   await page.goto(`${url}/news`, { timeout });
 
