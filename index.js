@@ -32,24 +32,20 @@ const main = async () => {
     const call = async (num) => {
       const data = { number: num };
       //   await axios.post(`http://localhost:3350/`, data);
-      // await axios.post(
-      //   `https://test-vercel-nsl3olo0y-nur1208.vercel.app/`,
-      //   data
-      // );
-      await axios.get(
-        `https://test-vercel-six-psi.vercel.app/?number=${num}`
+      await axios.post(
+        `https://test-vercel-six-psi.vercel.app`,
+        data
       );
+      // await axios.get(
+      //   `https://test-vercel-six-psi.vercel.app/?number=${num}`
+      // );
 
       // await axios.get(`http://localhost:3350/?number=${num}`);
     };
 
     app.get("/", (req, res) => {
-      let num = 0;
-      setTimeout(() => {
-        call(Math.random());
-      }, 1000 * 5);
-      num = num + 1;
       console.log(req.query.number);
+      call();
       res.send(`Hello World! ${req.query.number}`);
     });
 
@@ -58,6 +54,12 @@ const main = async () => {
       //   await NewsModel.deleteMany();
       const news = new NewsModel(req.body);
       const newNews = await news.save();
+      let num = 0;
+      setTimeout(() => {
+        call(Math.random());
+      }, 1000 * 5);
+      num = num + 1;
+
       //   console.log(req.query.number);
       res.json({ newNews });
     });
