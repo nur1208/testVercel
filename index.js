@@ -54,11 +54,11 @@ const main = async () => {
       //   await NewsModel.deleteMany();
       const news = new NewsModel(req.body);
       const newNews = await news.save();
-      let num = 0;
-      setTimeout(() => {
-        call(Math.random());
-      }, 1000 * 5);
-      num = num + 1;
+      // let num = 0;
+      // setTimeout(() => {
+      //   call(Math.random());
+      // }, 1000 * 5);
+      // num = num + 1;
 
       //   console.log(req.query.number);
       res.json({ newNews });
