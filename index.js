@@ -39,11 +39,6 @@ const main = async () => {
     };
 
     app.get("/", (req, res) => {
-      let num = 0;
-      setTimeout(() => {
-        call(Math.random());
-      }, 1000 * 5);
-      num = num + 1;
       //   console.log(req.query.number);
       res.send(`Hello World! ${req.query.number}`);
     });
