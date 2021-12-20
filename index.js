@@ -66,6 +66,7 @@ const main = async () => {
     });
 
     app.get("/getYahooFinanceNews", async (req, res) => {
+      res.json({ message: `DONE` });
       console.log(
         "----------yahoo finance get news script is running----------"
       );
@@ -74,7 +75,7 @@ const main = async () => {
         "----------yahoo finance get news script is DONE----------"
       );
 
-      res.json({ message: `DONE` });
+      // res.json({ message: `DONE` });
     });
     // app.get("/api/v1/news", (req, res) => {
     //   res.send("working");
