@@ -1,0 +1,18 @@
+@URL = https://test-vercel-six-psi.vercel.app
+
+@localURL = http://localhost:3350
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "number": 100
+}
+
+###
+
+POST {{localURL}}
+Content-Type: application/json
+
+{
+    "number": 100
+}
