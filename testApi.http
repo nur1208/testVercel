@@ -5,7 +5,7 @@ POST {{URL}}
 Content-Type: application/json
 
 {
-    "number": 100
+    "number": 1300
 }
 
 ###
@@ -14,5 +14,9 @@ POST {{localURL}}
 Content-Type: application/json
 
 {
-    "number": 100
+    "number": 1400
 }
+
+###
+
+GET {{localURL}}/getYahooFinanceNews

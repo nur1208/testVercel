@@ -1,10 +1,11 @@
 import express from "express";
-// import morgan from "morgan";
+import morgan from "morgan";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import axios from "axios";
 import NewsModel from "./model.js";
+import { getYahooFinanceNews } from "./scrapingScripts/getYahooFinaceNews/getYahooFinaceNews.js";
 dotenv.config();
 
 const main = async () => {
@@ -20,7 +21,7 @@ const main = async () => {
     const port = 3350;
 
     // TODO connect to that database then start the server.
-    // app.use(morgan("dev"));
+    app.use(morgan("dev"));
     app.use(express.json()); // support json encoded bodies
     // app.use(express.urlencoded({ extended: true })); // support encoded bodies
 
@@ -50,7 +51,7 @@ const main = async () => {
     });
 
     app.post("/", async (req, res) => {
-      console.log(req.body);
+      // console.log(req.body);
       //   await NewsModel.deleteMany();
       const news = new NewsModel(req.body);
       const newNews = await news.save();
@@ -62,6 +63,18 @@ const main = async () => {
 
       //   console.log(req.query.number);
       res.json({ newNews });
+    });
+
+    app.get("/getYahooFinanceNews", async (req, res) => {
+      console.log(
+        "----------yahoo finance get news script is running----------"
+      );
+      await getYahooFinanceNews();
+      console.log(
+        "----------yahoo finance get news script is DONE----------"
+      );
+
+      res.json({ message: `DONE` });
     });
     // app.get("/api/v1/news", (req, res) => {
     //   res.send("working");
