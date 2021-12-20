@@ -52,14 +52,9 @@ const main = async () => {
       console.log(req.body);
       //   await NewsModel.deleteMany();
       const news = new NewsModel(req.body);
-      await news.save();
-      let num = 0;
-      setTimeout(() => {
-        call(Math.random());
-      }, 1000 * 10);
-      num = num + 1;
+      const newNews = await news.save();
       //   console.log(req.query.number);
-      res.send(`Hello World! ${req.query.number}`);
+      res.json({ newNews });
     });
     // app.get("/api/v1/news", (req, res) => {
     //   res.send("working");
