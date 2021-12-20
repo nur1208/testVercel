@@ -13,7 +13,7 @@ const main = async () => {
     await mongoose
       // eslint-disable-next-line no-undef
       .connect(process.env.MONGODB_URL);
-
+    // adding
     console.log("Connected to DB");
 
     const app = express();
