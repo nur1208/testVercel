@@ -19,6 +19,7 @@
     "express": "^4.17.2",
     "mongoose": "^6.1.2",
     "morgan": "^1.10.0",
-    "puppeteer": "^13.0.0"
+    "puppeteer": "^13.0.0",
+    "puppeteer-core": "^13.0.0"
   }
 }

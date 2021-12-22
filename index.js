@@ -6,6 +6,7 @@ import cors from "cors";
 import axios from "axios";
 import NewsModel from "./model.js";
 import { getYahooFinanceNews } from "./scrapingScripts/getYahooFinaceNews/getYahooFinaceNews.js";
+import newsRouter from "./routes/newsRoute.js";
 dotenv.config();
 
 const main = async () => {
@@ -82,7 +83,7 @@ const main = async () => {
     // });
 
     // Routing
-    // app.use("/api/v1/news", newsRouter);
+    app.use("/api/v1/news", newsRouter);
 
     app.listen(port, () => {
       console.log(

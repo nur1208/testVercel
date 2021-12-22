@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ###
 
-GET {{localURL}}/getYahooFinanceNews
+GET {{localURL}}/api/v1/news?title=Delta CEO asks CDC to cut quarantine time for breakthrough COVID cases&source=yahoo finance&publishedAt=2021-12-22T04:21:53.964889
 
 ###
 

@@ -1,4 +1,5 @@
 // import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import chromium from "chrome-aws-lambda";
 import cheerio from "cheerio";
 import fs from "fs";
@@ -27,7 +28,19 @@ export const getYahooFinanceNews = async () => {
   const timeout = 1000 * 60 * 2;
 
   // const browser = await puppeteer.launch({ headless: true });
-  const browser = await chromium.puppeteer.launch({
+  // const browser = await chromium.puppeteer.launch({
+  //   args: [
+  //     ...chromium.args,
+  //     "--hide-scrollbars",
+  //     "--disable-web-security",
+  //   ],
+  //   defaultViewport: chromium.defaultViewport,
+  //   executablePath: await chromium.executablePath,
+  //   headless: true,
+  //   ignoreHTTPSErrors: true,
+  // });
+
+  const browser = await puppeteer.launch({
     args: [
       ...chromium.args,
       "--hide-scrollbars",
@@ -46,15 +59,15 @@ export const getYahooFinanceNews = async () => {
   try {
     await page.waitForSelector(mainNewsWrapperV2, { timeout });
 
-    await page.waitForTimeout(1000 * 30);
+    // await page.waitForTimeout(1000 * 30);
 
-    await page.evaluate(() => window.scrollBy(0, -9999));
+    // await page.evaluate(() => window.scrollBy(0, -9999));
 
-    await autoScroll(page);
+    // await autoScroll(page);
 
     // await page.evaluate(() => window.scrollBy(0, 4991));
 
-    await page.waitForTimeout(1000 * 60 * 1);
+    // await page.waitForTimeout(1000 * 60 * 1);
 
     const html = await page.evaluate(() => document.body.innerHTML);
     // fs.writeFile(mainPageHtml, html, function (err) {
